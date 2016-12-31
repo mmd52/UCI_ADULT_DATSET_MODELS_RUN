@@ -218,5 +218,17 @@ for (f in features) {
 write.csv(x=train_test,file="ADULT_USI_FE_Numerical.csv")
 
 
-print("=====================Loading datasets complete.=================")
+#===========================================================
+#Preparing for xgboost now
+features = names(train_test)
+for (f in features) {
+  if (class(train_test[[f]])=="character") {
+    #cat("VARIABLE : ",f,"\n")
+    levels <- unique(train_test[[f]])
+    train_test[[f]] <- as.numeric(as.integer(factor(train_test[[f]], levels=levels)))
+  }
+}
 
+write.csv(x=train_test,file="ADULT_USI_FE_Numerical_XGBOOST.csv")
+
+print("=====================Loading datasets complete.=================")

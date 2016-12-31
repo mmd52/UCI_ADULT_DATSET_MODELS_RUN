@@ -28,6 +28,7 @@ checkInstallLoad("car")
 checkInstallLoad("e1071")
 
 #calling the libraries for Random forest
+checkInstallLoad("class")
 checkInstallLoad("data.table")
 checkInstallLoad("Matrix")
 checkInstallLoad("YaleToolkit")
