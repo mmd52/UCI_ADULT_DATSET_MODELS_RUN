@@ -46,3 +46,15 @@ pred<- ifelse(predict(svm_model,testing_data[,-14])>=0.5,1,0)
 table(pred,testing_data[,14])
 
 #Accuracy of SVM is 81%
+
+#Stacking SVM ON SVM
+training_data$logit_f<-ifelse(predict(svm_model,training_data[,-14])>=0.5,1,0)
+
+testing_data$logit_f<-ifelse(predict(svm_model,testing_data[,-14])>=0.5,1,0)
+
+svm_model<-svm(training_data[,-14],training_data[,14])
+summary(svm_model)
+
+pred<- ifelse(predict(svm_model,testing_data[,-14])>=0.5,1,0)
+
+table(pred,testing_data[,14])
